@@ -21,6 +21,6 @@ interface GitHubService {
 }
 
 data class Repository(
-    val name: String,
-    val description: String?
+    val repoName: String,
+    val descr: String?
 )

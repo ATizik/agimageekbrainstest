@@ -13,7 +13,7 @@ class MainViewModel(gitHubServ: GitHubService = gitHubService) {
         disposable += gitHubService.listRepos()
             .doOnSubscribe { state.onNext(MainViewState.Loading) }
             .doOnSuccess { state.onNext(MainViewState.Content(it)) }
-            .subscribeBy (onError = { state.onNext(MainViewState.Error(it)) })
+            .subscribeBy ()
     }
 
 

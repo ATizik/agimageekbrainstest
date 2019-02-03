@@ -1,5 +1,6 @@
 package ru.agima.agimageekbrains
 
+import android.view.View
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlin.random.Random
@@ -10,9 +11,14 @@ class RepositoryItem(val name: String, val description: String): Item() {
 
     override fun getId(): Long = Random.nextLong()
 
+    override fun createViewHolder(itemView: View): ViewHolder {
+        itemView.textView2.text = name
+        itemView.textView3.text = description
+        return super.createViewHolder(itemView)
+    }
+
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.textView2.text = name
-        viewHolder.containerView.textView3.text = description
+
     }
 
     override fun getLayout(): Int = R.layout.repo

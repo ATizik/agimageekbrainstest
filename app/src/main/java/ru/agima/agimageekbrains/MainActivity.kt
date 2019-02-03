@@ -31,8 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        rv.layoutManager = LinearLayoutManager(this)
-        rv.adapter = groupAdapter
+
 
         button.clicks().forEach {
             textView.text = "Button Clicked"
@@ -41,7 +40,6 @@ class MainActivity : AppCompatActivity() {
 
         compDisp += mainViewModel.state
             .throttleLast(0, TimeUnit.MILLISECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(onNext = ::mainStateBinder)
     }
 
@@ -76,4 +74,4 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-private fun Repository.toItem() = RepositoryItem(name ?: "No name" ,description ?: "No description")
+private fun Repository.toItem() = RepositoryItem(name ,description ?: "No description")
